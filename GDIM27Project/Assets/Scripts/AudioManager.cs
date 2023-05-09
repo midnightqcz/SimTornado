@@ -18,6 +18,8 @@ public class AudioManager : MonoBehaviour
     AudioSource strongTornadoSource;
     AudioSource bgmSource;
 
+    private int count = 0;
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -34,7 +36,21 @@ public class AudioManager : MonoBehaviour
         bgmSource.loop = true;
         bgmSource.Play();
     }
-
+    
+    public void levelUpSoundEffect()
+    {
+        if(count == 0)
+        {
+            stopSmallTornadoSource();
+            playMediumTornadoSource();
+        }
+        if(count == 1)
+        {
+            stopMediumTornadoSource();
+            playLargeTornadoSource();
+        }
+        count++;
+    }
 
     //if (other.gameObject.tag == "Player")
     public void playSmallTornadoSource()

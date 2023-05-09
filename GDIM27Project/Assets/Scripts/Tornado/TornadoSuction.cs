@@ -40,13 +40,14 @@ public class TornadoSuction : MonoBehaviour
         collider = GetComponent<CapsuleCollider>();
         //Debug.Log(collider.radius);
         comp = GameObject.FindWithTag("vcam1");
-        TornadoAudioManager = AudioObject.GetComponent<AudioManager>();
-        TornadoAudioManager.playSmallTornadoSource();
+        TornadoAudioManager = AudioObject.GetComponent<AudioManager>(); //create an audiomanager object to control only the tornado part audio.
+        TornadoAudioManager.playSmallTornadoSource(); //since the tornado starting from small, so playing small at the beginning.
     }
 
 
     private void OnTriggerStay(Collider other)
     {
+        //wanghuai wrote this part, so ask him.
         int objectLevel;
         objectLevel = returnTagLevel(other);
         if (tornadoLevel >= objectLevel)
@@ -65,6 +66,7 @@ public class TornadoSuction : MonoBehaviour
     }
     private int returnTagLevel(Collider other)
     {
+        //this part is comparing tag making these tags into cases for future purpose. and easier to adjust.
         if (other.gameObject.CompareTag("LV1"))
         {
             return 0;
@@ -127,37 +129,37 @@ public class TornadoSuction : MonoBehaviour
 
     private void levelUp()
     {
-        tornadoLevel++;
-        changeForce(cForce() + tornadoLevel * levelUpForce);
-        changeRadius(cRadius() + tornadoLevel * levelUpRadius);
-        this.gameObject.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
+        tornadoLevel++; //adding tornadolevels integer
+        changeForce(cForce() + tornadoLevel * levelUpForce); //change force bigger.
+        changeRadius(cRadius() + tornadoLevel * levelUpRadius); //change radius bigger
+        this.gameObject.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f); //make the scale bigger
+        //this part could be better but I am sleepy now. basically get the level and the changing sound requirement, if true change to next level sound.
         if(tornadoLevel == middleLevelAudio)
         {
-            TornadoAudioManager.stopSmallTornadoSource();
-            TornadoAudioManager.playMediumTornadoSource();
+            TornadoAudioManager.levelUpSoundEffect();
         }
         if(tornadoLevel == largeLevelAudio)
         {
-            TornadoAudioManager.stopMediumTornadoSource();
-            TornadoAudioManager.playLargeTornadoSource();
+            TornadoAudioManager.levelUpSoundEffect();
         }
         comp.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance += radius / CameraDisScale / 5;
+        //above is a camera things, to make every level up zoom bigger just change the number in the function smaller, vice versa.
         //Debug.Log(force+ " " + radius);
     }
     public float cForce()
     {
-        return force;
+        return force; //return current force
     }
     public void changeForce(float nForce)
     {
-        force = nForce;
+        force = nForce; //changing to new force
     }
     public float cRadius()
     {
-        return radius;
+        return radius; //return current radius
     }
     public void changeRadius(float nRadius)
     {
-        radius = nRadius;
+        radius = nRadius; //changing to new radius
     }
 }  
