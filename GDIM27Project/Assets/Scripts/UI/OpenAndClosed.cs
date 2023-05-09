@@ -9,7 +9,7 @@ public class OpenAndClosed : MonoBehaviour
     public Button openButton; // OpenButton
     public Button closeButton; // closeButton
 
-    void Start()
+    private void Start()
     {
         //Click Button to open and close UI
         openButton.onClick.AddListener(OpenSetting);
@@ -17,7 +17,7 @@ public class OpenAndClosed : MonoBehaviour
         setting.SetActive(false);
     }
 
-    void OpenSetting()
+    private void OpenSetting()
     {
         // Open the setting UI
         setting.SetActive(true);
@@ -26,12 +26,12 @@ public class OpenAndClosed : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    void CloseSetting()
+    private void CloseSetting()
     {
         // Close the setting UI
         setting.SetActive(false);
 
         // Resume game time
-        Time.timeScale = 1;
+        Time.timeScale = 0;
     }
 }
