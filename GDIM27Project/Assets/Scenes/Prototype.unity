@@ -769,6 +769,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &113997170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 113997171}
+  - component: {fileID: 113997172}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &113997171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113997170}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.487211, y: 2.8170962, z: -21.109903}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &113997172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113997170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d60a6bc3f69f2134a9c956203a4ce221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgm: {fileID: 8300000, guid: a3b3d5c5e10db0b4f99ade4926560884, type: 3}
+  smallTornado: {fileID: 8300000, guid: e3754ecc61f15bb488911e9c0b673ba8, type: 3}
+  middleTornado: {fileID: 8300000, guid: 034f7e2d6fb723443adea6bce56e4ad2, type: 3}
+  strongTornado: {fileID: 8300000, guid: 27ff60cecc0c9d344a96b15c3f05cf94, type: 3}
 --- !u!1001 &138805710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9065,7 +9113,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1665229414}
-  m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -5.590638, y: 1, z: -15.94}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.01}
   m_ConstrainProportionsScale: 0
@@ -9074,7 +9122,7 @@ Transform:
   - {fileID: 865524606}
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!54 &1665229420
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9116,6 +9164,7 @@ MonoBehaviour:
   objectPoints: 0a000000140000001e0000002800000032000000
   levelUpForce: 0.5
   levelUpRadius: 0.5
+  AudioObject: {fileID: 113997170}
 --- !u!65 &1665229422
 BoxCollider:
   m_ObjectHideFlags: 0

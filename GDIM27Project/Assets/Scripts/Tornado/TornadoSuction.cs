@@ -30,11 +30,18 @@ public class TornadoSuction : MonoBehaviour
     public int[] objectPoints = new int[] { 10, 20, 30, 40, 50 }; // lv1,2,3,4,5 object's value
     public float levelUpForce = 0.5f; //level up force adjust
     public float levelUpRadius = 0.5f; //level up radius adjust
+    public int middleLevelAudio = 2; //deternmine when to change the soundeffect of the tornado to middle
+    public int largeLevelAudio = 3; //deternmine when to change the soundeffect of the tornado to large
+    AudioManager TornadoAudioManager = new AudioManager();
+    public GameObject AudioObject;
+    
     void Start()
     {
         collider = GetComponent<CapsuleCollider>();
         //Debug.Log(collider.radius);
         comp = GameObject.FindWithTag("vcam1");
+        TornadoAudioManager = AudioObject.GetComponent<AudioManager>();
+        TornadoAudioManager.playSmallTornadoSource();
     }
 
 
@@ -124,6 +131,16 @@ public class TornadoSuction : MonoBehaviour
         changeForce(cForce() + tornadoLevel * levelUpForce);
         changeRadius(cRadius() + tornadoLevel * levelUpRadius);
         this.gameObject.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
+        if(tornadoLevel == middleLevelAudio)
+        {
+            TornadoAudioManager.stopSmallTornadoSource();
+            TornadoAudioManager.playMediumTornadoSource();
+        }
+        if(tornadoLevel == largeLevelAudio)
+        {
+            TornadoAudioManager.stopMediumTornadoSource();
+            TornadoAudioManager.playLargeTornadoSource();
+        }
         comp.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance += radius / CameraDisScale / 5;
         //Debug.Log(force+ " " + radius);
     }
