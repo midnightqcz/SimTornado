@@ -640,6 +640,10 @@ MonoBehaviour:
   smallTornado: {fileID: 8300000, guid: e3754ecc61f15bb488911e9c0b673ba8, type: 3}
   middleTornado: {fileID: 8300000, guid: 034f7e2d6fb723443adea6bce56e4ad2, type: 3}
   strongTornado: {fileID: 8300000, guid: 27ff60cecc0c9d344a96b15c3f05cf94, type: 3}
+  bgmVolume: 1
+  tornadoVolume: 1
+  bgmVolumeSlider: {fileID: 1214930914}
+  tornadoVolumeSlider: {fileID: 1815872468}
 --- !u!1001 &132993967
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7652,6 +7656,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96f3a88af0d20d24685a21461b8bb8b6, type: 3}
+--- !u!114 &1815872468 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6191917710911865212, guid: 664fe2ae8bbb19c45bdf39b3962f8289, type: 3}
+  m_PrefabInstance: {fileID: 4759977649945908678}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1866957353
 PrefabInstance:
   m_ObjectHideFlags: 0

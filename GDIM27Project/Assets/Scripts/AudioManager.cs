@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI; 
 public class AudioManager : MonoBehaviour
 {
     [Header("BGM")]//存放背景音乐
@@ -12,6 +13,12 @@ public class AudioManager : MonoBehaviour
     public AudioClip smallTornado;
     public AudioClip middleTornado;
     public AudioClip strongTornado;
+
+    [Header("Audio Settings")]
+    public float bgmVolume = 1.0f;
+    public float tornadoVolume = 1.0f;
+    public Slider bgmVolumeSlider; // 需要在 Unity 的 Inspector 中设置
+    public Slider tornadoVolumeSlider; // 需要在 Unity 的 Inspector 中设置
 
     AudioSource smallTornadoSource;
     AudioSource middleTornadoSource;
@@ -28,6 +35,9 @@ public class AudioManager : MonoBehaviour
         strongTornadoSource = gameObject.AddComponent<AudioSource>();
         bgmSource= gameObject.AddComponent<AudioSource>();
         StartLevelAudio();
+
+        bgmVolumeSlider.onValueChanged.AddListener(ChangeBGMVolume);
+        tornadoVolumeSlider.onValueChanged.AddListener(ChangeTornadoVolume);
     }
 
     public void StartLevelAudio()
@@ -84,10 +94,20 @@ public class AudioManager : MonoBehaviour
         strongTornadoSource.Stop();
     }
 
-    //int windLevel = 1;
-    //smallTornadoSource.clip = smallTornado;
-    // smallTornadoSource.loop = true;
-    //smallTornadoSource.Play();
+    public void ChangeBGMVolume(float newVolume)
+    {
+        bgmVolume = newVolume;
+        bgmSource.volume = newVolume;
+    }
+
+    public void ChangeTornadoVolume(float newVolume)
+    {
+        tornadoVolume = newVolume;
+        smallTornadoSource.volume = newVolume;
+        middleTornadoSource.volume = newVolume;
+        strongTornadoSource.volume = newVolume;
+    }
+
 
 
 }
