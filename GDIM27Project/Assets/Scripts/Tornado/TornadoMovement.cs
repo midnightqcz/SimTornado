@@ -25,6 +25,7 @@ public class TornadoMovement : MonoBehaviour
     // indicating whether the tornado is currently grounded or not.
     public bool isGrounded;
 
+    
     Rigidbody rb;
 
     void Start()
@@ -65,12 +66,12 @@ public class TornadoMovement : MonoBehaviour
     // Add an upward force to the tornado to make it jump.
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
+        
             // add an upward force to the tornado to make it jump.
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
+       
     }
+    
     void FixedUpdate()
     {
         tornadoMovement();
@@ -78,6 +79,9 @@ public class TornadoMovement : MonoBehaviour
     void Update()
     {
         CheckGround();
-        Jump();
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            Jump();
+        }
     }
 }
