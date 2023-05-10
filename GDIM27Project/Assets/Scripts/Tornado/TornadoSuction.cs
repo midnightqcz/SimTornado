@@ -94,16 +94,21 @@ public class TornadoSuction : MonoBehaviour
     }
     private void moveTowardsTornado(Collider other, int points)
     {
+        // object moving derection
         Vector3 direction = transform.position - other.transform.position;
-        float distance = direction.magnitude;
+        float distance = Vector3.Distance(transform.position, other.transform.position);
         // Check if the other collider is within the suction range of the tornado
         if (distance <= radius)
         {
             // Calculate the strength of the suction force based on the distance between the tornado and the other collider
             float magnitude = force * (1 - distance / radius);
 
+            // Add upward force to the suction direction
+            Vector3 upVector = Vector3.up * 1f;
+            Vector3 suctionDirection = (direction.normalized + upVector).normalized;
+
             // Apply the suction force to the other collider in the direction of the tornado
-            other.transform.position += direction.normalized * magnitude * Time.deltaTime;
+            other.transform.position += suctionDirection * magnitude * Time.deltaTime;
 
             // If the other collider is close enough to the tornado, destroy it
             if (distance <= destroyArea)
