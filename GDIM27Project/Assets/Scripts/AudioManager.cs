@@ -27,9 +27,8 @@ public class AudioManager : MonoBehaviour
 
     private int count = 0;
 
-    private void Awake()
+    private void Start()
     {
-        DontDestroyOnLoad(gameObject);
         smallTornadoSource = gameObject.AddComponent<AudioSource>();
         middleTornadoSource = gameObject.AddComponent<AudioSource>();
         strongTornadoSource = gameObject.AddComponent<AudioSource>();
