@@ -37,6 +37,9 @@ public class TornadoSuction : MonoBehaviour
 
     AudioManager TornadoAudioManager = new AudioManager();
     public GameObject AudioObject;
+
+    public delegate void OnLevelUpAction(int newLevel);
+    public static event OnLevelUpAction OnLevelUp;
     
     void Start()
     {
@@ -67,7 +70,7 @@ public class TornadoSuction : MonoBehaviour
         }
         
     }
-    private int returnTagLevel(Collider other)
+    public int returnTagLevel(Collider other)
     {
         //this part is comparing tag making these tags into cases for future purpose. and easier to adjust.
         if (other.gameObject.CompareTag("LV1"))
@@ -158,6 +161,8 @@ public class TornadoSuction : MonoBehaviour
         comp.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance += radius / CameraDisScale / 0.5f;
         //above is a camera things, to make every level up zoom bigger just change the number in the function smaller, vice versa.
         //Debug.Log(force+ " " + radius);
+
+        OnLevelUp?.Invoke(tornadoLevel);
     }
     public float cForce()
     {
