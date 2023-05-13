@@ -1,12 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class GameStateManager : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject mainMenu;
-    public string gameSceneName = "GameScene";
-    public string mainMenuSceneName = "MainMenuScene";
+
+    public GameObject VictoryMenu;
+    public string gameSceneName;
+    public string mainMenuSceneName;
+    public string victorySceneName;
 
     private bool isGamePaused;
 
@@ -14,7 +18,18 @@ public class GameStateManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
+        VictoryMenu.SetActive(false);
         isGamePaused = false;
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name == mainMenuSceneName)
+        {
+            mainMenu.SetActive(true);
+        }
+        else
+        {
+            mainMenu.SetActive(false);
+        }
     }
 
     private void Update()
@@ -61,5 +76,11 @@ public class GameStateManager : MonoBehaviour
         Time.timeScale = paused ? 0f : 1f;
         pauseMenu.SetActive(paused);
         isGamePaused = paused;
+    }
+
+    public void Victory() 
+    {   
+        SceneManager.LoadScene(victorySceneName);
+        VictoryMenu.SetActive(true);
     }
 }
