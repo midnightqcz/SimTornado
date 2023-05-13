@@ -7859,7 +7859,7 @@ MonoBehaviour:
   speedMultiplier: 1.5
   jumpForce: 10
   GroundCheck: {fileID: 1785564465}
-  GroundDistance: 0.5
+  GroundDistance: 1.5
   GroundMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -7968,7 +7968,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CameraDisScale: 30
   vcam: {fileID: 643815209}
-  force: 5
+  force: 15
   radius: 5
   points: 0
   lastLevelPoints: 0
