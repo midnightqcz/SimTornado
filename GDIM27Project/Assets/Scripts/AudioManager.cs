@@ -35,6 +35,24 @@ public class AudioManager : MonoBehaviour
         bgmSource= gameObject.AddComponent<AudioSource>();
         StartLevelAudio();
 
+        float storedBgmVolume = PlayerPrefs.GetFloat("BgmVolume", 1.0f);
+
+        float storedTornadoVolume = PlayerPrefs.GetFloat("TornadoVolume", 1.0f);
+        // 设置背景音乐音量滑动条初始值
+        bgmVolumeSlider.value = storedBgmVolume;
+
+        // 设置龙卷风音效音量滑动条初始值
+        tornadoVolumeSlider.value = storedTornadoVolume;
+        
+
+        // 设置背景音乐音源的音量
+        bgmSource.volume = storedBgmVolume;
+
+        // 设置龙卷风音效音源的音量
+        smallTornadoSource.volume = storedTornadoVolume;
+        middleTornadoSource.volume = storedTornadoVolume;
+        strongTornadoSource.volume = storedTornadoVolume;
+
         bgmVolumeSlider.onValueChanged.AddListener(ChangeBGMVolume);
         tornadoVolumeSlider.onValueChanged.AddListener(ChangeTornadoVolume);
     }
@@ -97,6 +115,7 @@ public class AudioManager : MonoBehaviour
     {
         bgmVolume = newVolume;
         bgmSource.volume = newVolume;
+         PlayerPrefs.SetFloat("BgmVolume", newVolume);
     }
 
     public void ChangeTornadoVolume(float newVolume)
@@ -105,8 +124,7 @@ public class AudioManager : MonoBehaviour
         smallTornadoSource.volume = newVolume;
         middleTornadoSource.volume = newVolume;
         strongTornadoSource.volume = newVolume;
+        PlayerPrefs.SetFloat("TornadoVolume", newVolume);
     }
-
-
 
 }
