@@ -14,10 +14,6 @@ public class UIManager : MonoBehaviour
     public string victorySceneName;
 
     private bool isGamePaused;
-    
-    // Count down system
-    public float countdownTime = 60f;
-    public Text countdownDisplay;
     private void Start()
     {
         Time.timeScale = 1f;
@@ -88,20 +84,4 @@ public class UIManager : MonoBehaviour
         VictoryMenu.SetActive(true);
     }
 
-    //Count down system and did have funtion to stat the contdown yet.
-    IEnumerator CountdownToStart()
-    {
-        while (countdownTime > 0)
-        {
-            countdownDisplay.text = "countdown: " + countdownTime.ToString();
-
-            yield return new WaitForSecondsRealtime(1f);
-
-            countdownTime--;
-        }
-
-        countdownDisplay.text = "countdown finish!";
-
-        // do something after countdown finish.
-    }
 }
