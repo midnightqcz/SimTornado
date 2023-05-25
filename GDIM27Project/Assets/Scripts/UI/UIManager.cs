@@ -14,7 +14,6 @@ public class UIManager : MonoBehaviour
     public string victorySceneName;
 
     private bool isGamePaused;
-   
     private void Start()
     {
         Time.timeScale = 1f;
@@ -85,5 +84,4 @@ public class UIManager : MonoBehaviour
         VictoryMenu.SetActive(true);
     }
 
-   
 }
