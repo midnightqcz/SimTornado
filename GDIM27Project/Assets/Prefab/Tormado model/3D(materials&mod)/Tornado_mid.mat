@@ -45,7 +45,7 @@ Material:
     - _wobbleSpeed: 20
     - _wobbleStrength: 0.2
     m_Colors:
-    - _Color: {r: 244.95686, g: 345.34903, b: 766.9961, a: 0}
+    - _Color: {r: 11.181761, g: 11.181761, b: 11.181761, a: 1}
     - _noiseSpeed_1: {r: 1, g: 1, b: 0, a: 0}
     - _shearStrength: {r: 2, g: 2, b: 0, a: 0}
     - _wobbleFrequency: {r: 50, g: 60, b: 0, a: 0}
