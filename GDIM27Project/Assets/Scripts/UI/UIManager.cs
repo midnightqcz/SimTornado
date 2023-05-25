@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,6 +14,9 @@ public class UIManager : MonoBehaviour
     public string victorySceneName;
 
     private bool isGamePaused;
+
+    public float countdownTime = 60f; 
+    public Text countdownDisplay; 
 
     private void Start()
     {
@@ -82,5 +86,21 @@ public class UIManager : MonoBehaviour
     {   
         SceneManager.LoadScene(victorySceneName);
         VictoryMenu.SetActive(true);
+    }
+
+    IEnumerator CountDown()
+    {
+        while (countdownTime > 0)
+        {
+            countdownDisplay.text = "CountDown: " + countdownTime.ToString();
+
+            yield return new WaitForSecondsRealtime(1f);
+
+            countdownTime--;
+        }
+
+        countdownDisplay.text = "CountDown Finsh!";
+
+        //somethings to do after CountDown Finsh
     }
 }
