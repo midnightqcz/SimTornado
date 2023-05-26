@@ -13166,7 +13166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tornadoSpeed: 8
   speedMultiplier: 1.5
-  jumpForce: 10
+  jumpForce: 20
   GroundCheck: {fileID: 1785564465}
   GroundDistance: 1.5
   GroundMask:

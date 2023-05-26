@@ -25,7 +25,7 @@ public class TornadoMovement : MonoBehaviour
     // indicating whether the tornado is currently grounded or not.
     public bool isGrounded;
 
-    
+
     Rigidbody rb;
 
     void Start()
@@ -66,16 +66,28 @@ public class TornadoMovement : MonoBehaviour
     // Add an upward force to the tornado to make it jump.
     private void Jump()
     {
-        
-            // add an upward force to the tornado to make it jump.
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-       
+        // add an upward force to the tornado to make it jump.
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
-    
+
     void FixedUpdate()
     {
         tornadoMovement();
+
+        float currentHeight = transform.position.y;
+
+        // 2 times of the tornado's scale (y
+        float maxHeight = transform.localScale.y * 5;
+
+        // Lock the tornado's flying height if it reaches to the maxHeight
+        if (currentHeight > maxHeight)
+        {
+            Vector3 newPosition = transform.position;
+            newPosition.y = maxHeight;
+            transform.position = newPosition;
+        }
     }
+
     void Update()
     {
         CheckGround();
