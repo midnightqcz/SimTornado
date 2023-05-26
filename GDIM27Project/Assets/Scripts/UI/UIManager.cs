@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,7 +14,6 @@ public class UIManager : MonoBehaviour
     public string victorySceneName;
 
     private bool isGamePaused;
-
     private void Start()
     {
         Time.timeScale = 1f;
@@ -83,4 +83,5 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(victorySceneName);
         VictoryMenu.SetActive(true);
     }
+
 }
