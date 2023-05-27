@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using BehaviorDesigner.Runtime.Tasks.Unity.UnityInput;
 
 public class TornadoSuction : MonoBehaviour
 {
@@ -40,16 +41,35 @@ public class TornadoSuction : MonoBehaviour
 
     public delegate void OnLevelUpAction(int newLevel);
     public static event OnLevelUpAction OnLevelUp;
-    
+    private float currentCam; //record the current distance of camera
+    public GameObject speedLine;
+
+
     void Start()
-    {
+    {       
         collider = GetComponent<CapsuleCollider>();
         //Debug.Log(collider.radius);
         comp = GameObject.FindWithTag("vcam1");
         TornadoAudioManager = AudioObject.GetComponent<AudioManager>(); //create an audiomanager object to control only the tornado part audio.
         TornadoAudioManager.playSmallTornadoSource(); //since the tornado starting from small, so playing small at the beginning.
+
+        speedLine.SetActive(false); // disable the speed line when game start
+        currentCam = comp.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance;
     }
 
+    private void Update()
+    {
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            comp.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance = currentCam * 1.5f;
+            speedLine.SetActive(true);
+        }
+        else 
+        {
+            comp.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance = currentCam;
+            speedLine.SetActive(false);
+        }
+    }
 
     public void OnTriggerStay(Collider other)
     {
@@ -159,6 +179,8 @@ public class TornadoSuction : MonoBehaviour
             TornadoAudioManager.levelUpSoundEffect();
         }
         comp.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance += radius / CameraDisScale / 0.5f;
+
+        currentCam = comp.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance;
         //above is a camera things, to make every level up zoom bigger just change the number in the function smaller, vice versa.
         //Debug.Log(force+ " " + radius);
 
