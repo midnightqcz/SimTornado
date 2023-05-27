@@ -10442,7 +10442,7 @@ GameObject:
   - component: {fileID: 1120704034}
   - component: {fileID: 1120704033}
   m_Layer: 0
-  m_Name: speedline VFX
+  m_Name: "speedline VFX(\u53EF\u4EE5\u589E\u52A0\u9884\u89C8\u6D41\u7545\u5EA6\uFF0C\u6700\u540E\u6700\u540E\u9700\u8981\u5220\u6389)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13469,6 +13469,7 @@ MonoBehaviour:
   levelUpScaleIncrease: 0.5
   destroyArea: 0.5
   AudioObject: {fileID: 113997170}
+  speedLine: {fileID: 0}
 --- !u!95 &1665229423
 Animator:
   serializedVersion: 5
