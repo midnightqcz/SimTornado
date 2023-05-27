@@ -40,6 +40,9 @@ public class TornadoSuction : MonoBehaviour
 
     public delegate void OnLevelUpAction(int newLevel);
     public static event OnLevelUpAction OnLevelUp;
+
+    private float currentCam;
+    public GameObject speedLine; // componet of speed line
     
     void Start()
     {
@@ -48,9 +51,24 @@ public class TornadoSuction : MonoBehaviour
         comp = GameObject.FindWithTag("vcam1");
         TornadoAudioManager = AudioObject.GetComponent<AudioManager>(); //create an audiomanager object to control only the tornado part audio.
         TornadoAudioManager.playSmallTornadoSource(); //since the tornado starting from small, so playing small at the beginning.
+
+        currentCam = comp.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance;
+        speedLine.SetActive(false);
     }
 
-
+    private void Update()
+    {
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            comp.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance = currentCam * 1.3f;
+            speedLine.SetActive(true);
+        }
+        else
+        {
+            comp.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance = currentCam;
+            speedLine.SetActive(false);
+        }
+    }
     public void OnTriggerStay(Collider other)
     {
         //wanghuai wrote this part, so ask him.
@@ -159,6 +177,7 @@ public class TornadoSuction : MonoBehaviour
             TornadoAudioManager.levelUpSoundEffect();
         }
         comp.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance += radius / CameraDisScale / 0.5f;
+        currentCam = comp.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance;
         //above is a camera things, to make every level up zoom bigger just change the number in the function smaller, vice versa.
         //Debug.Log(force+ " " + radius);
 
