@@ -22,6 +22,10 @@ public class GameStateManager : MonoBehaviour
     public float countdownTime = 60f;
     public Text countdownDisplay;
 
+    public GameObject countdownDisplayObject;
+
+    private Coroutine countdownCoroutine;
+
     private void Awake()
     {
         // Singleton pattern
@@ -34,12 +38,17 @@ public class GameStateManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Start()
     {
         // Initial state
         ChangeGameState(GameState.MainMenu);
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        countdownTime= 60f; // reset countdown time
     }
 
     public void ChangeGameState(GameState newGameState)
@@ -50,19 +59,44 @@ public class GameStateManager : MonoBehaviour
         {
             case GameState.MainMenu:
                 // Operations needed in the MainMenu state
+                if (countdownCoroutine != null)
+                {
+                    StopCoroutine(countdownCoroutine);
+                    countdownCoroutine = null;
+                }
+                countdownDisplayObject.SetActive(false);
                 break;
             case GameState.InGame:
                 // Operations needed in the InGame state
                 Time.timeScale = 1;
+
+                if (countdownCoroutine == null)
+                {
+                    countdownCoroutine = StartCoroutine(CountdownToStart());
+                }
+                countdownDisplayObject.SetActive(true);
                 break;
             case GameState.Paused:
                 // Operations needed in the Paused state
                 Time.timeScale = 0;
+
+                if (countdownCoroutine != null)
+                {
+                    StopCoroutine(countdownCoroutine);
+                    countdownCoroutine = null;
+                }
+                countdownDisplayObject.SetActive(false);
                 break;
             case GameState.GameOver:
                 // Operations needed in the GameOver state
+                if (countdownCoroutine != null)
+                {
+                    StopCoroutine(countdownCoroutine);
+                    countdownCoroutine = null;
+                }
+                countdownDisplayObject.SetActive(false);
                 break;
-                // Handle other states
+            // Handle other states
         }
     }
 
@@ -71,14 +105,15 @@ public class GameStateManager : MonoBehaviour
     {
         while (countdownTime > 0)
         {
-            countdownDisplay.text = "countdown: " + countdownTime.ToString();
+            countdownDisplay.text = countdownTime.ToString();
 
             yield return new WaitForSecondsRealtime(1f);
 
             countdownTime--;
         }
 
-        countdownDisplay.text = "countdown finish!";
+        //countdownDisplay.text = "countdown finish!";
+        ChangeGameState(GameState.GameOver);
 
         // do something after countdown finish.
     }
