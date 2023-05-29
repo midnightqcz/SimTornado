@@ -9,7 +9,7 @@ public class TornadoSuction : MonoBehaviour
      *  small, medium, large variable changed, allow more building type
      *  all type changed to float, due to there are a lot pieces in a building, trynna make number smaller to fit)
      */
-
+        
     CapsuleCollider collider;
     [SerializeField] int CameraDisScale;
     [SerializeField] private CinemachineVirtualCamera vcam;
@@ -34,6 +34,8 @@ public class TornadoSuction : MonoBehaviour
     public int largeLevelAudio = 3; //deternmine when to change the soundeffect of the tornado to large
     public float levelUpScaleIncrease =0.01f; //increasing the size of the tornado in a certain ration
     public float destroyArea = 0.5f;
+    public float colliderSoundArea=0.6f;
+
 
     AudioManager TornadoAudioManager = new AudioManager();
     public GameObject AudioObject;
@@ -54,6 +56,7 @@ public class TornadoSuction : MonoBehaviour
 
         currentCam = comp.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance;
         speedLine.SetActive(false);
+        
     }
 
     private void Update()
@@ -140,10 +143,12 @@ public class TornadoSuction : MonoBehaviour
         }
     }
 
+    
     private void addPoints(int points)
     {
         currentPoints += points;
         checkingLevelUp();
+        TornadoAudioManager.playJiFenZengJiaSource();
     }
     private void checkingLevelUp()
     {
