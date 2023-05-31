@@ -32,10 +32,8 @@ public class TornadoSuction : MonoBehaviour
     public float levelUpRadius = 0.5f; //level up radius adjust
     public int middleLevelAudio = 2; //deternmine when to change the soundeffect of the tornado to middle
     public int largeLevelAudio = 3; //deternmine when to change the soundeffect of the tornado to large
-    public float levelUpScaleIncrease = 0.01f; //increasing the size of the tornado in a certain ration
+    public float levelUpScaleIncrease =0.01f; //increasing the size of the tornado in a certain ration
     public float destroyArea = 0.5f;
-    public float colliderSoundArea = 0.6f;
-
 
     AudioManager TornadoAudioManager = new AudioManager();
     public GameObject AudioObject;
@@ -45,7 +43,7 @@ public class TornadoSuction : MonoBehaviour
 
     private float currentCam;
     public GameObject speedLine; // componet of speed line
-
+    
     void Start()
     {
         collider = GetComponent<CapsuleCollider>();
@@ -56,12 +54,11 @@ public class TornadoSuction : MonoBehaviour
 
         currentCam = comp.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance;
         speedLine.SetActive(false);
-
     }
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if(Input.GetKey(KeyCode.LeftShift))
         {
             comp.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance = currentCam * 1.3f;
             speedLine.SetActive(true);
@@ -89,7 +86,7 @@ public class TornadoSuction : MonoBehaviour
                 Debug.Log(currentPoints);
             }*/
         }
-
+        
     }
     public int returnTagLevel(Collider other)
     {
@@ -143,12 +140,10 @@ public class TornadoSuction : MonoBehaviour
         }
     }
 
-
     private void addPoints(int points)
     {
         currentPoints += points;
         checkingLevelUp();
-        TornadoAudioManager.playJiFenZengJiaSource();
     }
     private void checkingLevelUp()
     {
@@ -164,20 +159,20 @@ public class TornadoSuction : MonoBehaviour
 
     private void levelUp()
     {
-        Vector3 moveUp = new Vector3(0f, levelUpScaleIncrease, 0f);
+        Vector3 moveUp = new Vector3(0f,levelUpScaleIncrease, 0f);
         tornadoLevel++; //adding tornadolevels integer
         changeForce(cForce() + tornadoLevel * levelUpForce); //change force bigger.
         changeRadius(cRadius() + tornadoLevel * levelUpRadius); //change radius bigger
         transform.position += moveUp;
         this.gameObject.transform.localScale += new Vector3(levelUpScaleIncrease, levelUpScaleIncrease, levelUpScaleIncrease); //make the scale bigger
         destroyArea += levelUpScaleIncrease;
-
+        
         //this part could be better but I am sleepy now. basically get the level and the changing sound requirement, if true change to next level sound.
-        if (tornadoLevel == middleLevelAudio)
+        if(tornadoLevel == middleLevelAudio)
         {
             TornadoAudioManager.levelUpSoundEffect();
         }
-        if (tornadoLevel == largeLevelAudio)
+        if(tornadoLevel == largeLevelAudio)
         {
             TornadoAudioManager.levelUpSoundEffect();
         }
@@ -204,4 +199,4 @@ public class TornadoSuction : MonoBehaviour
     {
         radius = nRadius; //changing to new radius
     }
-}
+}  
