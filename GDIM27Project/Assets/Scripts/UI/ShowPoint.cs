@@ -17,6 +17,6 @@ public class ShowPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = tornadoSuction.currentPoints.ToString();
+        scoreText.text = "Score: " + tornadoSuction.currentPoints.ToString();
     }
 }

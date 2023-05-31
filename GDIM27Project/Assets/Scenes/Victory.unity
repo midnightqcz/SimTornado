@@ -380,10 +380,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuUI
       objectReference: {fileID: 0}
-    - target: {fileID: 4759977650257159108, guid: 664fe2ae8bbb19c45bdf39b3962f8289, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4759977650257159109, guid: 664fe2ae8bbb19c45bdf39b3962f8289, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -468,17 +464,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6498478166017519033, guid: 664fe2ae8bbb19c45bdf39b3962f8289, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7621379162112153567, guid: 664fe2ae8bbb19c45bdf39b3962f8289, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 4.3
+    - target: {fileID: 4759977651834663680, guid: 664fe2ae8bbb19c45bdf39b3962f8289, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7621379162112153567, guid: 664fe2ae8bbb19c45bdf39b3962f8289, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 148.7
+      value: 69.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7871598803170799152, guid: 664fe2ae8bbb19c45bdf39b3962f8289, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 8048116078662395224, guid: 664fe2ae8bbb19c45bdf39b3962f8289, type: 3}
       propertyPath: m_IsActive
