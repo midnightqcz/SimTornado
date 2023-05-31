@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -6,24 +7,23 @@ public class UIManager : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject mainMenu;
+
     public GameObject VictoryMenu;
     public string gameSceneName;
     public string mainMenuSceneName;
     public string victorySceneName;
 
-    // Remove gameState reference as we will use singleton
-
-    // private bool isGamePaused; removed as we will use GameStateManager
-
+    private bool isGamePaused;
     private void Start()
     {
-        // Time.timeScale set in GameStateManager
+        Time.timeScale = 1f;
         pauseMenu.SetActive(false);
+        VictoryMenu.SetActive(false);
+        isGamePaused = false;
 
         Scene currentScene = SceneManager.GetActiveScene();
         if (currentScene.name == mainMenuSceneName)
         {
-            GameStateManager.Instance.ChangeGameState(GameStateManager.GameState.MainMenu);
             mainMenu.SetActive(true);
         }
         else
@@ -38,14 +38,11 @@ public class UIManager : MonoBehaviour
         {
             PauseGame();
         }
-        Victory();
     }
 
     public void StartGame()
     {
-        GameStateManager.Instance.ChangeGameState(GameStateManager.GameState.InGame);
         SceneManager.LoadScene(gameSceneName);
-
     }
 
     public void LeaveGame()
@@ -55,44 +52,36 @@ public class UIManager : MonoBehaviour
 
     public void PauseGame()
     {
-        // Use GameStateManager instead of isGamePaused
-        if (GameStateManager.Instance.currentGameState == GameStateManager.GameState.InGame)
+        if (!isGamePaused)
         {
-            GameStateManager.Instance.ChangeGameState(GameStateManager.GameState.Paused);
-            pauseMenu.SetActive(true);
+            SetGamePaused(true);
         }
     }
 
     public void ReturnToMainMenu()
     {
-        GameStateManager.Instance.ChangeGameState(GameStateManager.GameState.MainMenu);
         SceneManager.LoadScene(mainMenuSceneName);
-        pauseMenu.SetActive(false);
-        VictoryMenu.SetActive(false);
     }
 
     public void ResumeGame()
     {
-        // Use GameStateManager instead of isGamePaused
-        if (GameStateManager.Instance.currentGameState == GameStateManager.GameState.Paused)
+        if (isGamePaused)
         {
-            GameStateManager.Instance.ChangeGameState(GameStateManager.GameState.InGame);
-            pauseMenu.SetActive(false);
-
+            SetGamePaused(false);
         }
     }
 
-    public void Victory()
+    private void SetGamePaused(bool paused)
     {
-        Scene currentScene = SceneManager.GetActiveScene();
-        if (GameStateManager.Instance.currentGameState == GameStateManager.GameState.GameOver && currentScene.name == gameSceneName)
-        {
-            SceneManager.LoadScene(victorySceneName);
-            VictoryMenu.SetActive(true);
-            pauseMenu.SetActive(false);
-            mainMenu.SetActive(false);
-            Time.timeScale = 0;
-        }
-
+        Time.timeScale = paused ? 0f : 1f;
+        pauseMenu.SetActive(paused);
+        isGamePaused = paused;
     }
+
+    public void Victory() 
+    {   
+        SceneManager.LoadScene(victorySceneName);
+        VictoryMenu.SetActive(true);
+    }
+
 }
