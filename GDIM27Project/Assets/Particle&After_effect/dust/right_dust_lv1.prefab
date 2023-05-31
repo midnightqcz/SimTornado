@@ -27,7 +27,11 @@ Transform:
   m_GameObject: {fileID: 6774213051311786571}
   m_LocalRotation: {x: 0.40852517, y: 0.86684436, z: 0.105506904, w: 0.26562455}
   m_LocalPosition: {x: 0.78, y: 0.16, z: -11.27}
+<<<<<<< Updated upstream
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+=======
+  m_LocalScale: {x: 0.099999994, y: 0.099999994, z: 0.09999999}
+>>>>>>> Stashed changes
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -607,9 +611,15 @@ ParticleSystem:
     rotation3D: 0
     gravityModifier:
       serializedVersion: 2
+<<<<<<< Updated upstream
       minMaxState: 0
       scalar: 0
       minScalar: 0
+=======
+      minMaxState: 3
+      scalar: -0.009
+      minScalar: -0.006
+>>>>>>> Stashed changes
       maxCurve:
         serializedVersion: 2
         m_Curve:

@@ -42,11 +42,11 @@ Material:
     - _noiseSpeed: 1
     - _noiseStrangth: 1
     - _twirlStrength: 5
-    - _wobbleSpeed: 20
-    - _wobbleStrength: 0.3
+    - _wobbleSpeed: 15
+    - _wobbleStrength: 0.01
     m_Colors:
-    - _Color: {r: 3.7708468, g: 4.282953, b: 8.574186, a: 0}
+    - _Color: {r: 0.7931981, g: 1.0591527, b: 3.1727924, a: 1}
     - _noiseSpeed_1: {r: 1, g: 1, b: 0, a: 0}
     - _shearStrength: {r: 2, g: 2, b: 0, a: 0}
-    - _wobbleFrequency: {r: 0.1, g: 0.1, b: 0, a: 0}
+    - _wobbleFrequency: {r: 0.5, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
