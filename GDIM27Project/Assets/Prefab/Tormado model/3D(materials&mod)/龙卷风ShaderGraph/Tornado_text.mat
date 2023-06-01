@@ -37,10 +37,10 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _dissolve: 0.26
+    - _dissolve: 0.115
     - _noiseScale: 20
     - _noiseSpeed: 1
-    - _noiseStrength: 1
+    - _noiseStrength: 0.8
     - _twirlStrength: 5
     - _wobbleFreqeuncy: 0.1
     - _wobbleSpeed: 15
