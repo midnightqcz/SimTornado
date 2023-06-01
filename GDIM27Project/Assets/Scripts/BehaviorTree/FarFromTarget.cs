@@ -17,13 +17,16 @@ public class FarFromTarget : Conditional
 
 
     public string playerTag;
-    public float sightRange;
+    public SharedFloat sightRange;
+
+    private AudioSource fleeSource;
 
 
     public override void OnAwake()
     {
         base.OnAwake();
         myCollider = GetComponent<Collider>();
+        fleeSource = GetComponent<AudioSource>();
         target = GameObject.FindGameObjectWithTag(playerTag);
     }
 
@@ -34,16 +37,17 @@ public class FarFromTarget : Conditional
         targetPos.Value = targetTransform.Value.position;
 
         // if sight Range has player return Task Status.Success
-        if (!withinSight(myCollider, sightRange, targetPos.Value))
+        if (!withinSight(myCollider, sightRange.Value, targetPos.Value))
         {
-            Debug.Log("far from target" + targetPos.Value);
+            //Debug.Log("far from target" + targetPos.Value);
+            fleeSource.Stop();
             return TaskStatus.Failure;
 
         }
         //if did not found keep searching next frame        
         else
         {
-            Debug.Log("still in range" + targetPos.Value);
+            //Debug.Log("still in range" + targetPos.Value);
             return TaskStatus.Running;
         }
     }
@@ -51,8 +55,7 @@ public class FarFromTarget : Conditional
     //Check Player is in the sight range
     public bool withinSight(Collider myCollider, float sightRange, Vector3 targetPos)
     {
-
-        if (Vector3.Distance(myCollider.transform.position, targetPos) < sightRange)
+        if (Vector3.Distance(myCollider.transform.position, targetPos) < sightRange + 2f)
         {
             return true;
         }

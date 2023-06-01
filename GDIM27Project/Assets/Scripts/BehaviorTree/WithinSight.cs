@@ -15,7 +15,7 @@ public class WithinSight : Conditional
     public SharedVector3 targetPos;
 
     public string playerTag;
-    public float sightRange;
+    public SharedFloat sightRange;
 
 
     public override void OnAwake()
@@ -32,11 +32,11 @@ public class WithinSight : Conditional
         targetPos.Value = targetTransform.Value.position;
 
         // if sight Range has player return Task Status.Success
-        if (withinSight(myCollider, sightRange, targetPos.Value)) 
-        {           
+        if (withinSight(myCollider, sightRange.Value, targetPos.Value)) 
+        {
             //Debug.Log("Find Target" + targetPos.Value);
 
-            return base.OnUpdate(); 
+            return TaskStatus.Success;
         }
         //if did not found keep searching next frame        
         else 
