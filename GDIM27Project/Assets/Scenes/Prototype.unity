@@ -14900,7 +14900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CameraDisScale: 30
   vcam: {fileID: 643815209}
-  force: 15
+  force: 25
   radius: 5
   points: 0
   lastLevelPoints: 0
