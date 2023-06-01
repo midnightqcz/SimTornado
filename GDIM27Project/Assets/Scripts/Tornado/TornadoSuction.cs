@@ -71,7 +71,6 @@ public class TornadoSuction : MonoBehaviour
     }
     public void OnTriggerStay(Collider other)
     {
-        //wanghuai wrote this part, so ask him.
         int objectLevel;
         objectLevel = returnTagLevel(other);
         if (tornadoLevel >= objectLevel)
@@ -125,7 +124,7 @@ public class TornadoSuction : MonoBehaviour
             float magnitude = force * (1 - distance / radius);
 
             // Add upward force to the suction direction
-            Vector3 upVector = Vector3.up * 1f;
+            Vector3 upVector = Vector3.up * 2f;
             Vector3 suctionDirection = (direction.normalized + upVector).normalized;
 
             // Apply the suction force to the other collider in the direction of the tornado

@@ -37,17 +37,17 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _dissolve: 0.26
-    - _noiseScale: 20
+    - _dissolve: 0.313
+    - _noiseScale: 4
     - _noiseSpeed: 1
-    - _noiseStrength: 1
-    - _twirlStrength: 5
+    - _noiseStrength: 0.8
+    - _twirlStrength: 10
     - _wobbleFreqeuncy: 0.1
     - _wobbleSpeed: 15
     - _wobbleStrength: 0.05
     m_Colors:
     - _Color: {r: 2.2988276, g: 4.038543, b: 6.498019, a: 0}
-    - _noiseSpeed: {r: 1, g: 1, b: 0, a: 0}
-    - _shearStrength: {r: 1, g: 1, b: 0, a: 0}
+    - _noiseSpeed: {r: 4, g: 1, b: 0, a: 0}
+    - _shearStrength: {r: 10, g: 10, b: 0, a: 0}
     - _wobbleFrequency: {r: 0.5, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
