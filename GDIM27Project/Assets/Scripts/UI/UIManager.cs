@@ -87,7 +87,7 @@ public class UIManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         if (GameStateManager.Instance.currentGameState == GameStateManager.GameState.GameOver && currentScene.name == gameSceneName)
         {
-            SceneManager.LoadScene(victorySceneName);
+            //SceneManager.LoadScene(victorySceneName);
             VictoryMenu.SetActive(true);
             pauseMenu.SetActive(false);
             mainMenu.SetActive(false);

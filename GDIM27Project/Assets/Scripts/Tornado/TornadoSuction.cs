@@ -71,6 +71,7 @@ public class TornadoSuction : MonoBehaviour
     }
     public void OnTriggerStay(Collider other)
     {
+        //wanghuai wrote this part, so ask him.
         int objectLevel;
         objectLevel = returnTagLevel(other);
         if (tornadoLevel >= objectLevel)
