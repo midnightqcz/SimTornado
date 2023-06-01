@@ -25,7 +25,6 @@ public class TornadoMovement : MonoBehaviour
     // indicating whether the tornado is currently grounded or not.
     public bool isGrounded;
 
-
     Rigidbody rb;
 
     void Start()
@@ -43,6 +42,12 @@ public class TornadoMovement : MonoBehaviour
 
         // Create a vector representing the movement direction.
         Vector3 movingDirection = new Vector3(moveHorizontal, 0.0f, moveVertical);
+
+        if (movingDirection != Vector3.zero)
+        {
+            // Rotate the tornado to face the movement direction
+            transform.rotation = Quaternion.LookRotation(-movingDirection);
+        }
 
         // If the left shift key is pressed...
         if (Input.GetKey(KeyCode.LeftShift))
@@ -70,13 +75,27 @@ public class TornadoMovement : MonoBehaviour
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
+    // Controlling jingxiao's dust effect
+    private void SetDustObjectsActive(bool isActive)
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.tag == "DustObject")
+            {
+                child.gameObject.SetActive(isActive);
+            }
+        }
+    }
+
     void FixedUpdate()
     {
         tornadoMovement();
 
+        /* Horo Says it's no longer needed, go ask Horo
         float currentHeight = transform.position.y;
 
         // 2 times of the tornado's scale (y
+
         float maxHeight = transform.localScale.y * 5;
 
         // Lock the tornado's flying height if it reaches to the maxHeight
@@ -86,14 +105,26 @@ public class TornadoMovement : MonoBehaviour
             newPosition.y = maxHeight;
             transform.position = newPosition;
         }
+        */
     }
 
     void Update()
     {
         CheckGround();
+        //  Jump Check
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jump();
         }
+
+        if(!isGrounded || (int)rb.velocity.magnitude < 0.1)
+        {
+            SetDustObjectsActive(false);
+        }
+        else
+        {
+            SetDustObjectsActive(true);
+        }
+        
     }
 }
