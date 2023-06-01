@@ -37,7 +37,11 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _dissolve: 0.17
+<<<<<<< Updated upstream
+    - _dissolve: 0.1
+=======
+    - _dissolve: 0.117
+>>>>>>> Stashed changes
     - _noiseScale: 10
     - _noiseSpeed: 1
     - _noiseStrength: 1
