@@ -16,6 +16,7 @@ TagManager:
   - LV4
   - LV5
   - DustObject
+  - death
   layers:
   - Default
   - TransparentFX
