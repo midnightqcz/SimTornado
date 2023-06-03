@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 public class AudioManager : MonoBehaviour
 {
     [Header("BGM")]//存放背景音乐
-    public AudioClip bgm; 
+    public AudioClip playBgm;
+    public AudioClip menuBgm;
 
 
     [Header("龙卷风音效")]//存放龙卷风音效
     public AudioClip smallTornado;
     public AudioClip middleTornado;
     public AudioClip strongTornado;
+    public AudioClip Collision;
+    public AudioClip Suction;
 
     [Header("Audio Settings")]
     public float bgmVolume = 1.0f;
@@ -20,20 +23,39 @@ public class AudioManager : MonoBehaviour
     public Slider bgmVolumeSlider; // 需要在 Unity 的 Inspector 中设置
     public Slider tornadoVolumeSlider; // 需要在 Unity 的 Inspector 中设置
 
+    [Header("UI音效")] //存放UI音效
+    public AudioClip jiFenZengJia; //积分增加
+    public AudioClip jiFenDaoDa; //积分到达
+    public AudioClip countDown;
+    public AudioClip UIclick;
+
     AudioSource smallTornadoSource;
     AudioSource middleTornadoSource;
     AudioSource strongTornadoSource;
-    AudioSource bgmSource;
+    AudioSource playBgmSource;
+    AudioSource menuBgmSource;
+    AudioSource jiFenZengJiaSource;
+    AudioSource jiFenDaoDaSource;
+    AudioSource UIclickSource;
+    AudioSource collisionSource;
+    AudioSource suctionSource;
 
     private int count = 0;
 
     private void Start()
     {
+
+
         smallTornadoSource = gameObject.AddComponent<AudioSource>();
         middleTornadoSource = gameObject.AddComponent<AudioSource>();
         strongTornadoSource = gameObject.AddComponent<AudioSource>();
-        bgmSource= gameObject.AddComponent<AudioSource>();
-        StartLevelAudio();
+        playBgmSource = gameObject.AddComponent<AudioSource>();
+        menuBgmSource = gameObject.AddComponent<AudioSource>();
+        UIclickSource = gameObject.AddComponent<AudioSource>();
+        collisionSource = gameObject.AddComponent<AudioSource>();
+        suctionSource = gameObject.AddComponent<AudioSource>();
+        jiFenZengJiaSource = gameObject.AddComponent<AudioSource>();
+        StartMenuBgm();
 
         float storedBgmVolume = PlayerPrefs.GetFloat("BgmVolume", 1.0f);
 
@@ -43,10 +65,10 @@ public class AudioManager : MonoBehaviour
 
         // 设置龙卷风音效音量滑动条初始值
         tornadoVolumeSlider.value = storedTornadoVolume;
-        
+
 
         // 设置背景音乐音源的音量
-        bgmSource.volume = storedBgmVolume;
+        playBgmSource.volume = storedBgmVolume;
 
         // 设置龙卷风音效音源的音量
         smallTornadoSource.volume = storedTornadoVolume;
@@ -57,21 +79,34 @@ public class AudioManager : MonoBehaviour
         tornadoVolumeSlider.onValueChanged.AddListener(ChangeTornadoVolume);
     }
 
-    public void StartLevelAudio()
+
+    public void StartMenuBgm()//播放主菜单BGM
     {
-        bgmSource.clip = bgm;
-        bgmSource.loop = true;
-        bgmSource.Play();
+        menuBgmSource.clip = menuBgm;
+        menuBgmSource.loop = true;
+        menuBgmSource.Play();
     }
-    
-    public void levelUpSoundEffect()
+
+    public void StopMenuBgm()//停止主菜单BGM
     {
-        if(count == 0)
+        menuBgmSource.Stop();
+    }
+
+    public void StartPlayBgm()//播放游玩BGM
+    {
+        playBgmSource.clip = playBgm;
+        playBgmSource.loop = true;
+        playBgmSource.Play();
+    }
+
+    public void levelUpSoundEffect()//龙卷风音效改变
+    {
+        if (count == 0)
         {
             stopSmallTornadoSource();
             playMediumTornadoSource();
         }
-        if(count == 1)
+        if (count == 1)
         {
             stopMediumTornadoSource();
             playLargeTornadoSource();
@@ -79,7 +114,6 @@ public class AudioManager : MonoBehaviour
         count++;
     }
 
-    //if (other.gameObject.tag == "Player")
     public void playSmallTornadoSource()
     {
         smallTornadoSource.clip = smallTornado;
@@ -114,8 +148,8 @@ public class AudioManager : MonoBehaviour
     public void ChangeBGMVolume(float newVolume)
     {
         bgmVolume = newVolume;
-        bgmSource.volume = newVolume;
-         PlayerPrefs.SetFloat("BgmVolume", newVolume);
+        playBgmSource.volume = newVolume;
+        PlayerPrefs.SetFloat("BgmVolume", newVolume);
     }
 
     public void ChangeTornadoVolume(float newVolume)
@@ -127,4 +161,27 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.SetFloat("TornadoVolume", newVolume);
     }
 
+    public void playUIclickSource()//播放UI音效
+    {
+        UIclickSource.clip = UIclick;
+        UIclickSource.PlayOneShot(UIclick);
+    }
+
+    public void playCollisionSource() //播放碰撞（不可吸入）音效
+    {
+        collisionSource.clip = Collision;
+        collisionSource.PlayOneShot(Collision);
+    }
+
+    public void playSuctionSource() //播放吸入音效
+    {
+        suctionSource.clip = Suction;
+        suctionSource.PlayOneShot(Suction);
+    }
+
+    public void playJiFenZengJiaSource()
+    {
+        jiFenZengJiaSource.clip = jiFenZengJia;
+        jiFenZengJiaSource.PlayOneShot(jiFenZengJia);
+    }
 }

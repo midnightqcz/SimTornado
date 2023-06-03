@@ -1305,14 +1305,62 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6830682443388213620, guid: 2fb4672165b1c5d478532abe7bffe841, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6830682443388213621, guid: 2fb4672165b1c5d478532abe7bffe841, type: 3}
+      propertyPath: UIclick
+      value: 
+      objectReference: {fileID: 8300000, guid: 237db259c47ef3849ab74ed199515e9a, type: 3}
+    - target: {fileID: 6830682443388213621, guid: 2fb4672165b1c5d478532abe7bffe841, type: 3}
+      propertyPath: menuBgm
+      value: 
+      objectReference: {fileID: 8300000, guid: a3b3d5c5e10db0b4f99ade4926560884, type: 3}
+    - target: {fileID: 6830682443388213621, guid: 2fb4672165b1c5d478532abe7bffe841, type: 3}
+      propertyPath: playBgm
+      value: 
+      objectReference: {fileID: 8300000, guid: 3806a0604cde25049b09d3f04c0b0318, type: 3}
+    - target: {fileID: 6830682443388213621, guid: 2fb4672165b1c5d478532abe7bffe841, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6830682443388213621, guid: 2fb4672165b1c5d478532abe7bffe841, type: 3}
+      propertyPath: jiFenDaoDa
+      value: 
+      objectReference: {fileID: 8300000, guid: 7ab51b35a8393be4cbf379fe9f91e133, type: 3}
+    - target: {fileID: 6830682443388213621, guid: 2fb4672165b1c5d478532abe7bffe841, type: 3}
+      propertyPath: jiFenZengJia
+      value: 
+      objectReference: {fileID: 8300000, guid: 92a3bb0686b5cf44183bd9ee687072d3, type: 3}
     - target: {fileID: 6830682443388213621, guid: 2fb4672165b1c5d478532abe7bffe841, type: 3}
       propertyPath: bgmVolumeSlider
       value: 
       objectReference: {fileID: 58585744}
     - target: {fileID: 6830682443388213621, guid: 2fb4672165b1c5d478532abe7bffe841, type: 3}
+      propertyPath: bgmClips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6830682443388213621, guid: 2fb4672165b1c5d478532abe7bffe841, type: 3}
       propertyPath: tornadoVolumeSlider
       value: 
       objectReference: {fileID: 58585741}
+    - target: {fileID: 6830682443388213621, guid: 2fb4672165b1c5d478532abe7bffe841, type: 3}
+      propertyPath: musicClips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6830682443388213621, guid: 2fb4672165b1c5d478532abe7bffe841, type: 3}
+      propertyPath: bgmClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6830682443388213621, guid: 2fb4672165b1c5d478532abe7bffe841, type: 3}
+      propertyPath: musicClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: a3b3d5c5e10db0b4f99ade4926560884, type: 3}
+    - target: {fileID: 6830682443388213621, guid: 2fb4672165b1c5d478532abe7bffe841, type: 3}
+      propertyPath: musicClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3806a0604cde25049b09d3f04c0b0318, type: 3}
     - target: {fileID: 6830682443388213622, guid: 2fb4672165b1c5d478532abe7bffe841, type: 3}
       propertyPath: m_RootOrder
       value: 3

@@ -51,6 +51,8 @@ public class TornadoSuction : MonoBehaviour
         comp = GameObject.FindWithTag("vcam1");
         TornadoAudioManager = AudioObject.GetComponent<AudioManager>(); //create an audiomanager object to control only the tornado part audio.
         TornadoAudioManager.playSmallTornadoSource(); //since the tornado starting from small, so playing small at the beginning.
+        TornadoAudioManager.StartPlayBgm();
+        TornadoAudioManager.StopMenuBgm();
 
         currentCam = comp.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance;
         speedLine.SetActive(false);
