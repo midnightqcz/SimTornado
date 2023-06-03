@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1397
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Scene
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 492}
   m_MaxSize: {x: 10000, y: 10000}
@@ -73,7 +73,7 @@ MonoBehaviour:
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
-  m_LastLoadedLayoutName: 2 by 3
+  m_LastLoadedLayoutName: 
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 967
+  controlID: 44
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 959
+  controlID: 144
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -218,8 +218,8 @@ MonoBehaviour:
     y: 0
     width: 417
     height: 1347
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -245,8 +245,8 @@ MonoBehaviour:
     y: 0
     width: 1376
     height: 691
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -271,8 +271,8 @@ MonoBehaviour:
     y: 691
     width: 1376
     height: 656
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -339,7 +339,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 5a80faffbcabfaff52acfaffacbafaff60effaffe256fbffe656fbffeab1fbff20d3fbffd80cfcffdc0cfcff300dfcffc40dfcffd41afcff1023fcff246cfcff286cfcff2c6cfcffe478fcffe878fcffc27dfcfffc8efcff2ea6fcff32a6fcff3837fdff3cb8ffff00ac0000ecac000038ad000084ad0000
+      m_ExpandedIDs: 2458feff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -445,22 +445,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefab/MapPrefab
+    - Assets/Prefab
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefab/MapPrefab
+  - Assets/Prefab
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\Game make\Game fild\SimTornado\GDIM27Project
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 9a6a0100
-    m_LastClickedID: 92826
-    m_ExpandedIDs: 000000002e68010030680100326801003468010036680100386801003e6801004468010046680100486801004a6801004c6801004e680100506801005268010054680100926a0100eade060000ca9a3b
+    m_SelectedIDs: 28610100
+    m_LastClickedID: 90408
+    m_ExpandedIDs: 00000000d65e0100d85e0100da5e0100dc5e0100de5e0100e05e0100e25e0100e45e0100e65e0100e85e0100ea5e0100ec5e0100ee5e0100f05e0100f25e0100f45e0100f65e01002861010000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -488,7 +488,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002e68010030680100326801003468010036680100386801003a6801003c6801003e68010040680100426801004468010046680100486801004a6801004c6801004e68010050680100526801005468010000ca9a3b
+    m_ExpandedIDs: 00000000d65e0100d85e0100da5e0100dc5e0100de5e0100e05e0100e25e0100e45e0100e65e0100e85e0100ea5e0100ec5e0100ee5e0100f05e0100f25e0100f45e0100f65e0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -980,9 +980,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0.6120881, y: 0.013282753, z: -0.01030482, w: 0.7906109}
   m_Size:
-    m_Target: 6.54042
+    m_Target: 258.5665
     speed: 2
-    m_Value: 6.258775
+    m_Value: 247.43207
   m_Ortho:
     m_Target: 0
     speed: 2
