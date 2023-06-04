@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class MapController : MonoBehaviour
 {
-    public Transform terrParrent;
-    public GameObject terrObject;
-    public GameObject tornado;
+    public Transform player;
+    [Header("MapController")]
+    public Transform terrParent;
+    public Vector2 inputedTerrainSize = new Vector2(10, 10);
+    public StructData[] datas;
+    public List<GameObject> randomizedTerrainObject;
+    public float existTimeBeforeRemoval = 3f;
 
+    private Vector2 terrainSize;
+    private Dictionary<Vector2, GameObject> fixedLoadedTerrain;
     private Dictionary<(int x, int y), GameObject> loadedTerrain;
-    private Dictionary<(int x, int y), GameObject> temp;
+    private Dictionary<(int x, int y), GameObject> tempDict;
     private Dictionary<(int x, int y), GameobjAndCoroutine> unloadedTerrain;
-    private Stack<GameObject> terrainPool;
+    private List<GameObject> loadedTerrainList;
     private (int x, int y) lastPosition = (0, 0);
 
     struct GameobjAndCoroutine
@@ -19,15 +25,45 @@ public class MapController : MonoBehaviour
         public GameObject Go;
         public Coroutine Cor;
     }
+
+    [System.Serializable]
+    public struct StructData
+    {
+        public Vector2 key;
+        public GameObject value;
+    }
+
     private void Awake()
     {
+        terrainSize = new Vector2(inputedTerrainSize.x * 10, inputedTerrainSize.y * 10);
+        fixedLoadedTerrain = new Dictionary<Vector2, GameObject>();
         loadedTerrain = new Dictionary<(int x, int y), GameObject>();
-        temp = new Dictionary<(int x, int y), GameObject>();
+        tempDict = new Dictionary<(int x, int y), GameObject>();
         unloadedTerrain = new Dictionary<(int x, int y), GameobjAndCoroutine>();
-        terrainPool = new Stack<GameObject>();
+        loadedTerrainList = new List<GameObject>();
+        InitData();
     }
 
     private void Start()
+    {
+        FirstLoadTerrain();
+    }
+
+    private void FixedUpdate()
+    {
+        LoadTerrain();
+    }
+
+    void InitData()
+    {
+        for (int i = 0; i < datas.Length; i++)
+        {
+            if (fixedLoadedTerrain.ContainsKey(datas[i].key))
+                return;
+            fixedLoadedTerrain.Add(datas[i].key, datas[i].value);
+        }
+    }
+    private void FirstLoadTerrain()
     {
         for (int i = -1; i < 2; i++)
         {
@@ -35,54 +71,54 @@ public class MapController : MonoBehaviour
             {
                 if (loadedTerrain.TryGetValue((i, j), out GameObject terr))
                 {
-                    temp.Add((i, j), terr);//
+                    tempDict.Add((i, j), terr);
                     loadedTerrain.Remove((i, j));
-                    terr.transform.position = new Vector3(i * 100f, 0f, j * 100f);
+                    terr.transform.position = new Vector3(i * terrainSize.x, 0f, j * terrainSize.y);
                     terr.SetActive(true);
+
                 }
                 else
                 {
                     if (unloadedTerrain.TryGetValue((i, j), out GameobjAndCoroutine val))
                     {
                         StopCoroutine(val.Cor);
-                        temp.Add((i, j), val.Go);
+                        tempDict.Add((i, j), val.Go);
                         unloadedTerrain.Remove((i, j));
-                        val.Go.transform.position = new Vector3(i * 100f, 0f, j * 100f);
+                        val.Go.transform.position = new Vector3(i * terrainSize.x, 0f, j * terrainSize.y);
                         val.Go.SetActive(true);
                     }
                     else
                     {
 
-                        var newTerr = GetTerrain();
-                        temp.Add((i, j), newTerr);
-                        newTerr.transform.position = new Vector3(i * 100f, 0f, j * 100f);
+                        var newTerr = GetTerrainNew(i, j);
+                        tempDict.Add((i, j), newTerr);
+                        newTerr.transform.position = new Vector3(i * terrainSize.x, 0f, j * terrainSize.y);
                         newTerr.SetActive(true);
                     }
                 }
             }
         }
-        (loadedTerrain, temp) = (temp, loadedTerrain);
+        (loadedTerrain, tempDict) = (tempDict, loadedTerrain);
     }
 
-    private void FixedUpdate()
+    private void LoadTerrain()
     {
-        if (tornado != null)
+        if (player != null)
         {
-            (int x, int y) pos = (Mathf.RoundToInt(tornado.transform.position.x / 100f), Mathf.RoundToInt(tornado.transform.position.z / 100f));
+            (int x, int y) pos = (Mathf.RoundToInt(player.position.x / terrainSize.x), Mathf.RoundToInt(player.position.z / terrainSize.y));
             if (!(pos == lastPosition))
             {
                 lastPosition = pos;
-                temp.Clear();
-
+                tempDict.Clear();
                 for (int i = pos.x - 1; i < pos.x + 2; i++)
                 {
                     for (int j = pos.y - 1; j < pos.y + 2; j++)
                     {
                         if (loadedTerrain.TryGetValue((i, j), out GameObject terr))
                         {
-                            temp.Add((i, j), terr);
+                            tempDict.Add((i, j), terr);
                             loadedTerrain.Remove((i, j));
-                            terr.transform.position = new Vector3(i * 100f, 0f, j * 100f);
+                            terr.transform.position = new Vector3(i * terrainSize.x, 0f, j * terrainSize.y);
                             terr.SetActive(true);
                         }
                         else
@@ -90,22 +126,23 @@ public class MapController : MonoBehaviour
                             if (unloadedTerrain.TryGetValue((i, j), out GameobjAndCoroutine val))
                             {
                                 StopCoroutine(val.Cor);
-                                temp.Add((i, j), val.Go);
+                                tempDict.Add((i, j), val.Go);
                                 unloadedTerrain.Remove((i, j));
-                                val.Go.transform.position = new Vector3(i * 100f, 0f, j * 100f);
+                                val.Go.transform.position = new Vector3(i * terrainSize.x, 0f, j * terrainSize.y);
                                 val.Go.SetActive(true);
                             }
                             else
                             {
-                                var newTerr = GetTerrain();
-                                temp.Add((i, j), newTerr);
-                                newTerr.transform.position = new Vector3(i * 100f, 0f, j * 100f);
+                                var newTerr = GetTerrainNew(i, j);
+                                tempDict.Add((i, j), newTerr);
+                                newTerr.transform.position = new Vector3(i * terrainSize.x, 0f, j * terrainSize.y);
                                 newTerr.SetActive(true);
                             }
                         }
                     }
                 }
 
+                
                 foreach (var item in loadedTerrain)
                 {
                     unloadedTerrain.Add(item.Key, new GameobjAndCoroutine
@@ -115,14 +152,14 @@ public class MapController : MonoBehaviour
                     });
                 }
                 loadedTerrain.Clear();
-                (loadedTerrain, temp) = (temp, loadedTerrain);
+                (loadedTerrain, tempDict) = (tempDict, loadedTerrain);
             }
         }
     }
 
     private IEnumerator RemoveTerrDelay((int x, int y) pos)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(existTimeBeforeRemoval);
         if (unloadedTerrain.TryGetValue(pos, out var v))
         {
             RecycleTerrain(v.Go);
@@ -130,21 +167,25 @@ public class MapController : MonoBehaviour
         }
     }
 
-    
-    private GameObject GetTerrain()
-    {
-        if (terrainPool.Count > 0)
-        {
-            return terrainPool.Pop();
-        }
-        return Instantiate(terrObject, terrParrent);
 
-    }
-
-  
     private void RecycleTerrain(GameObject t)
     {
         t.SetActive(false);
-        terrainPool.Push(t);
+    }
+
+    private GameObject GetTerrainNew(int x, int y)
+    {
+        if (fixedLoadedTerrain.TryGetValue(new Vector2(x, y), out GameObject terr))
+        {
+            if (!loadedTerrainList.Contains(terr))
+            {
+                loadedTerrainList.Add(terr);
+                return Instantiate(terr, terrParent); ;
+            }
+            return Instantiate(terr, terrParent); ;
+        }
+
+        int randomTer = Random.Range(0, randomizedTerrainObject.Count);
+        return Instantiate(randomizedTerrainObject[randomTer], terrParent);
     }
 }

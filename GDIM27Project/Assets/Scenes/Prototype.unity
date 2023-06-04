@@ -1455,9 +1455,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c375ec39cf6de7443a9ec324c8495c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrParrent: {fileID: 686744866}
-  terrObject: {fileID: 2040057496840997671, guid: aadd65ccf2074514e975b1d725404601, type: 3}
-  tornado: {fileID: 1089733573}
+  player: {fileID: 5981933953795542944}
+  terrParent: {fileID: 686744866}
+  inputedTerrainSize: {x: 10, y: 10}
+  datas: []
+  randomizedTerrainObject:
+  - {fileID: 2040057496840997671, guid: aadd65ccf2074514e975b1d725404601, type: 3}
+  existTimeBeforeRemoval: 0
 --- !u!4 &686744866
 Transform:
   m_ObjectHideFlags: 0
@@ -6770,11 +6774,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1046130626}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1089733573 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7692542892780919225, guid: f1b80dfe627e15343a1b968223f9dc87, type: 3}
-  m_PrefabInstance: {fileID: 2763435348040453357}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1137744017
 GameObject:
   m_ObjectHideFlags: 0
@@ -9380,7 +9379,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5981933953795542947, guid: f1b80dfe627e15343a1b968223f9dc87, type: 3}
   m_PrefabInstance: {fileID: 2763435348040453357}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1089733573}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e2338ec48091f74faaf5cf446dbf8d2, type: 3}
