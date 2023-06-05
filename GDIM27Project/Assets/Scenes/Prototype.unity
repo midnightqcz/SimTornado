@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1396,7 +1396,7 @@ MonoBehaviour:
     FieldOfView: 1
     OrthographicSize: 5
     NearClipPlane: 0.3
-    FarClipPlane: 10000
+    FarClipPlane: 1000000
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
@@ -7725,7 +7725,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 10000
+  far clip plane: 1000000
   field of view: 1
   orthographic: 0
   orthographic size: 5
@@ -7894,6 +7894,10 @@ PrefabInstance:
     - target: {fileID: 1401513686003968555, guid: 2a5b5ae710d72af42bd6dcbe9d764ad2, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -83.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401513686045707024, guid: 2a5b5ae710d72af42bd6dcbe9d764ad2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1401513686045707025, guid: 2a5b5ae710d72af42bd6dcbe9d764ad2, type: 3}
       propertyPath: m_Pivot.x
@@ -9079,6 +9083,10 @@ PrefabInstance:
       propertyPath: levelUpScaleIncrease
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5981933953795542948, guid: f1b80dfe627e15343a1b968223f9dc87, type: 3}
+      propertyPath: tornadoSpeed
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 7692542892780919204, guid: f1b80dfe627e15343a1b968223f9dc87, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -9355,6 +9363,10 @@ PrefabInstance:
     - target: {fileID: 4759977650257158200, guid: 664fe2ae8bbb19c45bdf39b3962f8289, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4759977650257159108, guid: 664fe2ae8bbb19c45bdf39b3962f8289, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4759977650257159109, guid: 664fe2ae8bbb19c45bdf39b3962f8289, type: 3}
       propertyPath: m_Pivot.x
