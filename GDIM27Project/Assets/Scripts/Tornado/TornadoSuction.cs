@@ -124,7 +124,7 @@ public class TornadoSuction : MonoBehaviour
             float magnitude = force * (1 - distance / radius);
 
             // Add upward force to the suction direction
-            Vector3 upVector = Vector3.up * 1.2f;
+            Vector3 upVector = Vector3.up * 0.5f;
             Vector3 suctionDirection = (direction.normalized + upVector).normalized;
 
             // Apply the suction force to the other collider in the direction of the tornado
