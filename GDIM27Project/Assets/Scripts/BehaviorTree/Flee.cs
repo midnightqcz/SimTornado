@@ -21,7 +21,7 @@ public class Flee : Action
         myAgent.isStopped = false;
         fleeSource = GetComponent<AudioSource>();
         fleeSource.loop = true;
-        fleeSource.Play();
+        //fleeSource.Play();
     }
     // Update is called once per frame
     public override TaskStatus OnUpdate()
