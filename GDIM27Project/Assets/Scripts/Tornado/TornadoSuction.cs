@@ -43,7 +43,7 @@ public class TornadoSuction : MonoBehaviour
 
     private float currentCam;
     public GameObject speedLine; // componet of speed line
-    
+
     void Start()
     {
         collider = GetComponent<CapsuleCollider>();
@@ -53,8 +53,10 @@ public class TornadoSuction : MonoBehaviour
         TornadoAudioManager.playSmallTornadoSource(); //since the tornado starting from small, so playing small at the beginning.
         TornadoAudioManager.StartPlayBgm();
         TornadoAudioManager.StopMenuBgm();
-
         currentCam = comp.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance;
+        currentCam = 150;
+
+
         speedLine.SetActive(false);
     }
 
