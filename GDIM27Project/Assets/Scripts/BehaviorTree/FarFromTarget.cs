@@ -40,7 +40,7 @@ public class FarFromTarget : Conditional
         if (!withinSight(myCollider, sightRange.Value, targetPos.Value))
         {
             //Debug.Log("far from target" + targetPos.Value);
-            fleeSource.Stop();
+            //fleeSource.Stop();
             return TaskStatus.Failure;
 
         }

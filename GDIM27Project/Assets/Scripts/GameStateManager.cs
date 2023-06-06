@@ -48,7 +48,7 @@ public class GameStateManager : MonoBehaviour
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        countdownTime = 300f; // reset countdown time
+        countdownTime = 60f; // reset countdown time
     }
 
     public void ChangeGameState(GameState newGameState)

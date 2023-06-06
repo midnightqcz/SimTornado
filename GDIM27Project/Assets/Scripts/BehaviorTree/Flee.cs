@@ -19,8 +19,8 @@ public class Flee : Action
         base.OnStart();
         myAgent = GetComponent<NavMeshAgent>();
         myAgent.isStopped = false;
-        fleeSource = GetComponent<AudioSource>();
-        fleeSource.loop = true;
+        //fleeSource = GetComponent<AudioSource>();
+        //fleeSource.loop = true;
         //fleeSource.Play();
     }
     // Update is called once per frame

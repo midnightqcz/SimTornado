@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 2886327120240090175}
   - component: {fileID: 2886327120240090174}
   - component: {fileID: 2886327120240090173}
+  - component: {fileID: 2001998186191219966}
   m_Layer: 0
   m_Name: Gecko_Animations
   m_TagString: LV2
@@ -542,6 +543,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4ec53e3fcaaa640a645348fce91403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2001998186191219966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2541608631821715078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 149f269e1e2592f448a336b70dfbffb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
 --- !u!1 &3094936718327012746
 GameObject:
   m_ObjectHideFlags: 0

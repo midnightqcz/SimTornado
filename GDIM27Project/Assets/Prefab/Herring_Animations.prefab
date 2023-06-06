@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 5963787855086083972}
   - component: {fileID: 5963787855086083973}
   - component: {fileID: 5963787855086083974}
+  - component: {fileID: -5670504446250904913}
   m_Layer: 0
   m_Name: Herring_Animations
   m_TagString: LV1
@@ -380,6 +381,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4ec53e3fcaaa640a645348fce91403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5670504446250904913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5963787855086083975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 149f269e1e2592f448a336b70dfbffb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
 --- !u!1 &5989145136489845788
 GameObject:
   m_ObjectHideFlags: 0

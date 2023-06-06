@@ -170,7 +170,8 @@ public class MapController : MonoBehaviour
 
     private void RecycleTerrain(GameObject t)
     {
-        t.SetActive(false);
+        Destroy(t);
+        //t.SetActive(false);
     }
 
     private GameObject GetTerrainNew(int x, int y)
