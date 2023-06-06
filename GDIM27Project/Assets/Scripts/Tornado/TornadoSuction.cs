@@ -34,7 +34,6 @@ public class TornadoSuction : MonoBehaviour
     public int largeLevelAudio = 3; //deternmine when to change the soundeffect of the tornado to large
     public float levelUpScaleIncrease =0.01f; //increasing the size of the tornado in a certain ration
     public float destroyArea = 0.5f;
-    public bool firstTimeLv5 = true;
 
     AudioManager TornadoAudioManager = new AudioManager();
     public GameObject AudioObject;
@@ -56,7 +55,6 @@ public class TornadoSuction : MonoBehaviour
         TornadoAudioManager.StopMenuBgm();
         currentCam = comp.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance;
         currentCam = 150;
-        firstTimeLv5 = true;
 
         speedLine.SetActive(false);
     }
@@ -81,11 +79,6 @@ public class TornadoSuction : MonoBehaviour
         if (tornadoLevel >= objectLevel)
         {
             points = objectPoints[objectLevel];
-            if (points == objectPoints[4] && firstTimeLv5)
-            {
-                Time.timeScale = 0.5f;
-                Debug.Log("here~");
-            }
             moveTowardsTornado(other, points);
             
             //Debug.Log(currentPoints);
@@ -145,12 +138,6 @@ public class TornadoSuction : MonoBehaviour
             if (distance <= destroyArea)
             {
                 Destroy(other.gameObject);
-                if(points == objectPoints[4] && firstTimeLv5)
-                {
-                    Time.timeScale = 1.0f;
-                    Debug.Log("There~");
-                    firstTimeLv5 = false;
-                }
                 addPoints(points);
             }
         }
